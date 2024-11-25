@@ -41,24 +41,24 @@ const DetalleCurso = () => {
                 />
                 <div className="card-body text-center">
                     {/* Nombre y descripción */}
-                    <h1 className="card-title fw-light">{capitalize(curso.nombre)}</h1>
+                    <h2 className="card-title fw-light">{capitalize(curso.nombre)}</h2>
                     <p className="card-text text-muted ">{curso.descripcion}</p>
                     
                     {/* Información adicional */}
                     <div className="row mt-4">
                         <div className="col-md-6 mb-3">
-                            <h5 className='text-info-emphasis'><strong>Categoría:</strong></h5>
+                            <h3 className='text-info-emphasis'><strong>Categoría:</strong></h3>
                             <p>{capitalize(curso.categoria)}</p>
                         </div>
                         <div className="col-md-6 mb-3">
-                            <h5 className='text-info-emphasis'><strong>Duración:</strong></h5>
+                            <h3 className='text-info-emphasis'><strong>Duración:</strong></h3>
                             <p><i className="bi bi-clock"></i> {curso.horas} horas</p>
                         </div>
                     </div>
                     
                     {/* Tecnologías */}
                     <div className="mb-4">
-                        <h5 className='text-info-emphasis'><strong>Tecnologías:</strong></h5>
+                        <h3 className='text-info-emphasis'><strong>Tecnologías:</strong></h3>
                         <ul className="list-inline">
                             {curso.tecnologias.map((tec, index) => (
                                 <li 
@@ -80,9 +80,9 @@ const DetalleCurso = () => {
                             style={{ width: '250px', height: '250px', objectFit: 'cover' }}
                         />
                         <div>
-                            <h5 className="mb-1">
+                            <h2 className="mb-1">
                                 {capitalize(curso.profesor.user.nombre)} {capitalize(curso.profesor.user.apellido)}
-                            </h5>
+                            </h2>
                             <p className="text-muted mb-0">{curso.profesor.bio}</p>
                             <p className="text-muted"><strong>Email:</strong> {curso.profesor.user.mail}</p>
                         </div>
@@ -98,6 +98,7 @@ const DetalleCurso = () => {
                         >
                             Repositorio
                         </a>
+                        
                     </div>
                 </div>
             </div>
