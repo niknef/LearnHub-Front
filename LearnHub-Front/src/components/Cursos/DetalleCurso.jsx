@@ -47,18 +47,18 @@ const DetalleCurso = () => {
                     {/* Información adicional */}
                     <div className="row mt-4">
                         <div className="col-md-6 mb-3">
-                            <h3 className='text-info-emphasis'><strong>Categoría:</strong></h3>
+                            <h3 className='text-custom'><strong>Categoría:</strong></h3>
                             <p>{capitalize(curso.categoria)}</p>
                         </div>
                         <div className="col-md-6 mb-3">
-                            <h3 className='text-info-emphasis'><strong>Duración:</strong></h3>
+                            <h3 className='text-custom'><strong>Duración:</strong></h3>
                             <p><i className="bi bi-clock"></i> {curso.horas} horas</p>
                         </div>
                     </div>
                     
                     {/* Tecnologías */}
                     <div className="mb-4">
-                        <h3 className='text-info-emphasis'><strong>Tecnologías:</strong></h3>
+                        <h3 className='text-custom'><strong>Tecnologías:</strong></h3>
                         <ul className="list-inline">
                             {curso.tecnologias.map((tec, index) => (
                                 <li 
@@ -94,7 +94,7 @@ const DetalleCurso = () => {
                             href={curso.link} 
                             target="_blank" 
                             rel="noopener noreferrer" 
-                            className="btn btn-info btn-lg mb-4"
+                            className="btn boton-custom btn-lg mb-4"
                         >
                             Repositorio
                         </a>

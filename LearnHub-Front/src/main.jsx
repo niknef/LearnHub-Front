@@ -17,6 +17,10 @@ import Layout from './components/Layout/Layout.jsx';
 import Home from './pages/Home.jsx';
 import DetalleCursos from './components/Cursos/DetalleCurso.jsx'
 import Error404Page from './pages/Error404Page.jsx';
+import Logout from './components/Login/Logout.jsx'
+import Tecnologias from './pages/Tecnologias.jsx'
+import Categorias from './pages/Categorias.jsx';
+import Profesores from './pages/Profesores.jsx';
 
 
 const router = createBrowserRouter([
@@ -37,9 +41,25 @@ const router = createBrowserRouter([
         element: <Register />,
       },
       {
+        path: "/logout",
+        element: <Logout />
+      },
+      {
         path: "/cursos/:id",
         element: <ProtectedRoute> <DetalleCursos/> </ProtectedRoute>
       },
+      {
+        path: "/tecnologias",
+        element: <ProtectedRoute> <Tecnologias/> </ProtectedRoute>
+      },
+      {
+        path: "/categorias",
+        element: <ProtectedRoute> <Categorias/> </ProtectedRoute>
+      },
+      {
+        path: "/profesores",
+        element: <ProtectedRoute> <Profesores/> </ProtectedRoute>
+      }
     ]
   }
 ]);

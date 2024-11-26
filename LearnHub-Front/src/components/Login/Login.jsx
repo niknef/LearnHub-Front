@@ -41,7 +41,7 @@ const Login = () => {
           className="p-4 shadow-lg rounded" 
           style={{ width: '350px', backgroundColor: '#f9f9f9' }}
         >
-          <h3 className="text-center mb-4 text-primary">Iniciar Sesión</h3>
+          <h1 className="text-center mb-4 text-custom">Iniciar Sesión</h1>
           <div className="mb-3">
             <label htmlFor="email" className="form-label">Correo Electrónico</label>
             <input 
@@ -64,7 +64,7 @@ const Login = () => {
               required
             />
           </div>
-          <button type="submit" className="btn btn-primary w-100">Iniciar Sesión</button>
+          <button type="submit" className="btn boton-custom w-100">Iniciar Sesión</button>
           <div className="text-center mt-3">
             <Link to="/register" className="text-decoration-none text-secondary">¿Olvidaste tu contraseña?</Link>
           </div>
