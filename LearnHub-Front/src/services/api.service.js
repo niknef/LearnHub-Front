@@ -18,3 +18,16 @@ export async function call( { uri, method = "GET", body = undefined } ){
         return response.json()
     } )
 }
+
+export async function getProfesorByUsuarioId(usuarioId) {
+    await client.connect();
+
+    // Buscar el profesor relacionado al usuarioId
+    const profesor = await db.collection("Profesores").findOne({ "user.id": usuarioId });
+
+    if (!profesor) {
+        throw new Error("No se encontró un profesor para este usuario");
+    }
+
+    return profesor._id; // Retorna solo el ID del profesor
+}

@@ -1,9 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useToken } from "../../contexts/session.context";
+import { jwtDecode } from "jwt-decode";
+
+
 
 const NavBar = () => {
     const token = useToken();
+    let isAdmin = false;
+
+    // Decodificar el token para obtener el rol
+    if (token) {
+        try {
+            const decoded = jwtDecode(token); // Usamos jwtDecode
+            isAdmin = decoded.role === 'profesor';
+        } catch (error) {
+            console.error('Error decodificando el token:', error);
+        }
+    }
 
     return (
         <nav className="navbar navbar-expand-md navbar-light bg-light">
@@ -55,6 +69,14 @@ const NavBar = () => {
                                     <li className='nav-item'>
                                         <Link className='nav-link' to="/profesores">Profesores</Link>
                                     </li>
+                                    {/* Botón de Admin visible solo para profesores */}
+                                    {isAdmin && (
+                                        <li className='nav-item'>
+                                            <Link className='nav-link' to="/admin">
+                                                Admin
+                                            </Link>
+                                        </li>
+                                    )}
                                     <li className='nav-item'>
                                         <Link className='nav-link d-flex align-items-center boton-custom' to="/logout">
                                             Logout 

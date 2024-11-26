@@ -84,7 +84,7 @@ const DetalleCurso = () => {
                                 {capitalize(curso.profesor.user.nombre)} {capitalize(curso.profesor.user.apellido)}
                             </h2>
                             <p className="text-muted mb-0">{curso.profesor.bio}</p>
-                            <p className="text-muted"><strong>Email:</strong> {curso.profesor.user.mail}</p>
+                            <p className="text-muted"><strong>Email:</strong> {curso.profesor.user.email}</p>
                         </div>
                     </div>
 

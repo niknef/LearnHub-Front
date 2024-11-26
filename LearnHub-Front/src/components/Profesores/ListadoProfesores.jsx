@@ -29,7 +29,7 @@ const ListadoProfesores = ({ listado }) => {
                                 </h3>
                                 <p className="card-text text-muted text-center">{profesor.bio}</p>
                                 <p className="card-text text-center">
-                                    <strong>Email:</strong> {profesor.user.mail}
+                                    <strong>Email:</strong> {profesor.user.email}
                                 </p>
                             </div>
                         </div>
