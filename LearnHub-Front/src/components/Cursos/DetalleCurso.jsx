@@ -31,78 +31,77 @@ const DetalleCurso = () => {
 
      return (
         <div className="container my-5">
-            <div className="card mx-auto shadow-lg" style={{ maxWidth: '900px' }}>
-                {/* Imagen del curso */}
-                <img 
-                    src={`/img/${curso.img}`} 
-                    alt={curso.nombre} 
-                    className="card-img-top" 
-                    style={{ objectFit: 'cover' }} 
-                />
-                <div className="card-body text-center">
-                    {/* Nombre y descripción */}
-                    <h2 className="card-title fw-light">{capitalize(curso.nombre)}</h2>
-                    <p className="card-text text-muted ">{curso.descripcion}</p>
-                    
-                    {/* Información adicional */}
-                    <div className="row mt-4">
-                        <div className="col-md-6 mb-3">
-                            <h3 className='text-custom'><strong>Categoría:</strong></h3>
-                            <p>{capitalize(curso.categoria)}</p>
-                        </div>
-                        <div className="col-md-6 mb-3">
-                            <h3 className='text-custom'><strong>Duración:</strong></h3>
-                            <p><i className="bi bi-clock"></i> {curso.horas} horas</p>
-                        </div>
-                    </div>
-                    
-                    {/* Tecnologías */}
-                    <div className="mb-4">
-                        <h3 className='text-custom'><strong>Tecnologías:</strong></h3>
-                        <ul className="list-inline">
-                            {curso.tecnologias.map((tec, index) => (
-                                <li 
-                                    key={index} 
-                                    className="list-inline-item badge bg-secondary me-2"
-                                >
-                                    {capitalize(tec)}
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
+    <div className="card mx-auto shadow-lg">
+        {/* Imagen del curso */}
+        <img
+            src={`/img/${curso.img}`}
+            alt={curso.nombre}
+            className="card-img-top"
+            style={{ objectFit: 'cover' }}
+        />
+        <div className="card-body">
+            {/* Nombre y descripción */}
+            <h2 className="card-title text-center fw-light">{capitalize(curso.nombre)}</h2>
+            <p className="card-text text-muted text-center">{curso.descripcion}</p>
 
-                    {/* Información del profesor */}
-                    <div className="d-flex align-items-center bg-light p-4 rounded">
-                        <img 
-                            src={`/img/${curso.profesor.foto}`} 
-                            alt={`${capitalize(curso.profesor.user.nombre)} ${capitalize(curso.profesor.user.apellido)}`} 
-                            className="rounded-circle me-3" 
-                            style={{ width: '250px', height: '250px', objectFit: 'cover' }}
-                        />
-                        <div>
-                            <h2 className="mb-1">
-                                {capitalize(curso.profesor.user.nombre)} {capitalize(curso.profesor.user.apellido)}
-                            </h2>
-                            <p className="text-muted mb-0">{curso.profesor.bio}</p>
-                            <p className="text-muted"><strong>Email:</strong> {curso.profesor.user.email}</p>
-                        </div>
-                    </div>
+            {/* Información adicional */}
+            <div className="row mt-4 text-center">
+                <div className="col-md-4 mb-3">
+                    <h3 className="text-custom"><strong>Categoría:</strong></h3>
+                    <p>{capitalize(curso.categoria)}</p>
+                </div>
+                <div className="col-md-4 mb-3">
+                    <h3 className="text-custom"><strong>Duración:</strong></h3>
+                    <p><i className="bi bi-clock"></i> {curso.horas} horas</p>
+                </div>
+                <div className="col-md-4 mb-3">
+                    <h3 className="text-custom"><strong>Tecnologías:</strong></h3>
+                    <ul className="list-inline">
+                        {curso.tecnologias.map((tec, index) => (
+                            <li
+                                key={index}
+                                className="list-inline-item badge bg-secondary me-2"
+                            >
+                                {capitalize(tec)}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            </div>
 
-                    {/* Botón para el curso */}
-                    <div className="text-center mt-4">
-                        <a 
-                            href={curso.link} 
-                            target="_blank" 
-                            rel="noopener noreferrer" 
-                            className="btn boton-custom btn-lg mb-4"
-                        >
-                            Repositorio
-                        </a>
-                        
-                    </div>
+            {/* Botón para el curso */}
+            <div className="text-center mt-4 mb-4">
+                <a
+                    href={curso.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn boton-custom btn-lg"
+                >
+                    Repositorio
+                </a>
+            </div>
+
+            {/* Información del profesor */}
+            <div className="row bg-light p-4 rounded align-items-center">
+                <div className="col-12 col-md-4 text-center mb-3 mb-md-0">
+                    <img
+                        src={`/img/${curso.profesor.foto}`}
+                        alt={`${capitalize(curso.profesor.user.nombre)} ${capitalize(curso.profesor.user.apellido)}`}
+                        className="rounded-circle"
+                        style={{ width: '150px', height: '150px', objectFit: 'cover' }}
+                    />
+                </div>
+                <div className="col-12 col-md-8 text-center text-md-start">
+                    <h2 className="mb-1">
+                        {capitalize(curso.profesor.user.nombre)} {capitalize(curso.profesor.user.apellido)}
+                    </h2>
+                    <p className="text-muted mb-2">{curso.profesor.bio}</p>
+                    <p className="text-muted"><strong>Email:</strong> {curso.profesor.user.email}</p>
                 </div>
             </div>
         </div>
+    </div>
+</div>
     );
 };
 

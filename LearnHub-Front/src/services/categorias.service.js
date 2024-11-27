@@ -7,3 +7,10 @@ export async function getCategorias(){
 export async function getCategoria( id ){
     return call( { uri: `categorias/${id}` } )
 }
+
+export async function eliminarCategoria(id) {
+    return call({
+        uri: `categorias/${id}`,
+        method: "DELETE"
+    });
+}

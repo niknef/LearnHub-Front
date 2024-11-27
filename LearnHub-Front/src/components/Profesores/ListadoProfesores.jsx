@@ -14,7 +14,7 @@ const ListadoProfesores = ({ listado }) => {
             <div className="row">
                 {listado.map((profesor) => (
                     <div key={profesor._id} className="col-md-4 col-sm-6 col-12 mb-4 d-flex">
-                        <div className="card flex-fill shadow-sm">
+                        <div className="card card-custom flex-fill shadow-sm p-4">
                             {/* Imagen del profesor */}
                             <img
                                 src={`/img/${profesor.foto}`}

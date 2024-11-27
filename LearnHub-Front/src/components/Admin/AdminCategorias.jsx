@@ -2,13 +2,19 @@ import React, { useState, useEffect } from 'react';
 import CategoriasTable from './CategoriasTable';
 import { useNavigate } from 'react-router-dom';
 import * as serviceCategorias from '../../services/categorias.service';
+import Notification from '../Notificaciones/Notification';
+import { useLocation } from 'react-router-dom';
 
 const AdminCategorias = () => {
     const [categorias, setCategorias] = useState([]);
+    const location = useLocation();
+    const [notification, setNotification] = useState(location.state?.notification || null);
     const navigate = useNavigate();
 
     useEffect(() => {
-        serviceCategorias.getCategorias().then((data) => setCategorias(data));
+        serviceCategorias.getCategorias()
+            .then((data) => setCategorias(data))
+            .catch((error) => console.error(error));
     }, []);
 
     const handleEdit = (categoria) => {
@@ -17,8 +23,7 @@ const AdminCategorias = () => {
     };
 
     const handleDelete = (id) => {
-        console.log("Eliminar categoría", id);
-        // Lógica para eliminar categoría
+        navigate(`/admin/categorias/delete/${id}`); // Redirigir a la vista de confirmación
     };
 
     const handleAdd = () => {
@@ -28,6 +33,15 @@ const AdminCategorias = () => {
 
     return (
         <div className="container my-5">
+            {/* Notificación */}
+            {notification && (
+                <Notification
+                    type={notification.type}
+                    message={notification.message}
+                    onClose={() => setNotification(null)}
+                />
+            )}
+
             {/* Título */}
             <h2 className="text-center mb-4 text-custom">Administrar Categorías</h2>
 

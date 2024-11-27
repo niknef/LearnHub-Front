@@ -14,7 +14,7 @@ const ListadoCategorias = ({ listado }) => {
             <div className="row">
                 {listado.map((categoria) => (
                     <div key={categoria._id} className="col-md-4 col-sm-6 col-12 mb-4 d-flex">
-                        <div className="card flex-fill shadow-sm">
+                        <div className="card card-custom flex-fill shadow-sm">
                             <div className="card-body d-flex flex-column justify-content-between">
                                 <h3 className="card-title text-center text-custom">{capitalize(categoria.nombre)}</h3>
                                 <p className="card-text text-muted text-center">{categoria.descripcion}</p>

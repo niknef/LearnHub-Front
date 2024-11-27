@@ -14,7 +14,7 @@ const ListadoCursos = ({ listado }) => {
             <div className="row">
                 {listado.map((curso) => (
                     <div key={curso._id} className="col-md-4 col-sm-6 col-12 mb-4 d-flex">
-                        <div className="card flex-fill d-flex flex-column" style={{ width: '100%' }}>
+                        <div className="card card-custom flex-fill d-flex flex-column" style={{ width: '100%' }}>
                             <img 
                                 src={`/img/${curso.img}`}
                                 className="card-img-top" 
@@ -26,7 +26,7 @@ const ListadoCursos = ({ listado }) => {
                                 <p className="card-text fw-lighter"><strong className='text-custom'>Horas:</strong> <i className="bi bi-clock"></i> {curso.horas}</p>
                                 <p className="card-text fw-lighter"><strong className='text-custom'>Categoría:</strong> {capitalize(curso.categoria)}</p>
                                 <div className="mt-auto">
-                                    <Link to={"cursos/" + curso._id} className="btn boton-custom w-100">
+                                    <Link to={"/cursos/" + curso._id} className="btn boton-custom w-100">
                                         <i className="bi bi-arrow-return-right me-2"></i> Ver detalle
                                     </Link>
                                 </div>

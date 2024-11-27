@@ -2,33 +2,34 @@ import React, { useState, useEffect } from 'react';
 import CursosTable from './CursosTable';
 import { useNavigate } from 'react-router-dom';
 import * as serviceCursos from '../../services/cursos.service';
-import { jwtDecode } from "jwt-decode";
+import { jwtDecode } from 'jwt-decode';
+import Notification from '../Notificaciones/Notification';
+import { useLocation } from 'react-router-dom';
 
 const AdminCursos = () => {
     const [cursos, setCursos] = useState([]);
+    const location = useLocation();
+    const [notification, setNotification] = useState(location.state?.notification || null);
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Extraer el profesorId del JWT
         const token = localStorage.getItem("token");
         if (!token) {
             console.error("No se encontró el token");
-            navigate("/login"); // Redirigir al login si no hay token
+            navigate("/login");
             return;
         }
 
         try {
             const decoded = jwtDecode(token);
-            console.log(decoded);
-            const profesorId = decoded.profesorId
+            const profesorId = decoded.profesorId;
 
-            // Llamar al servicio con el profesorId
             serviceCursos.getCursosPorProfesor(profesorId)
                 .then((cursos) => setCursos(cursos))
                 .catch((error) => console.error(error));
         } catch (error) {
             console.error("Error al decodificar el token:", error);
-            navigate("/login"); // Redirigir al login si el token es inválido
+            navigate("/login");
         }
     }, [navigate]);
 
@@ -37,18 +38,25 @@ const AdminCursos = () => {
         // Lógica para editar curso
     };
 
-    const handleDelete = (id) => {
-        console.log("Eliminar curso", id);
-        // Lógica para eliminar curso
+    const handleAdd = () => {
+        navigate('/admin/cursos/new'); // Redirigir a la vista de creación de curso
     };
 
-    const handleAdd = () => {
-        console.log("Agregar nuevo curso");
-        // Lógica para agregar un curso
+    const handleDelete = async (id) => {
+        navigate(`/admin/cursos/eliminar/${id}`); // Redirigir a la vista de confirmación
     };
 
     return (
         <div className="container my-5">
+            {/* Notificación */}
+            {notification && (
+                <Notification
+                    type={notification.type}
+                    message={notification.message}
+                    onClose={() => setNotification(null)}
+                />
+            )}
+
             {/* Título */}
             <h2 className="text-center mb-4 text-custom">Administrar Cursos</h2>
 
@@ -72,7 +80,7 @@ const AdminCursos = () => {
             <CursosTable 
                 data={cursos} 
                 onEdit={handleEdit} 
-                onDelete={handleDelete} 
+                onDelete={handleDelete}
             />
         </div>
     );

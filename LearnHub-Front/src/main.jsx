@@ -1,9 +1,8 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import "bootstrap/dist/js/bootstrap.bundle.min.js"
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-
 import './index.css'
 import App from './App.jsx'
 import {
@@ -17,6 +16,7 @@ import Login from './components/Login/Login.jsx';
 import Register from './components/Login/Register.jsx';
 import Layout from './components/Layout/Layout.jsx';
 import Home from './pages/Home.jsx';
+import Cursos from './pages/Cursos.jsx';
 import DetalleCursos from './components/Cursos/DetalleCurso.jsx'
 import Error404Page from './pages/Error404Page.jsx';
 import Logout from './components/Login/Logout.jsx'
@@ -26,6 +26,10 @@ import Profesores from './pages/Profesores.jsx';
 import AdminCursos from './components/Admin/AdminCursos.jsx';
 import AdminCategorias from './components/Admin/AdminCategorias.jsx';
 import AdminTecnologias from './components/Admin/AdminTecnologias.jsx';
+import ConfirmDeleteCurso from './components/Admin/ConfrimDeleteCurso.jsx';
+import ConfirmDeleteCategoria from './components/Admin/ConfirmDeleteCategoria.jsx';
+import ConfirmDeleteTecnologia from './components/Admin/ConfrimDeleteTecnologia.jsx';
+import CrearCurso from './components/Admin/CrearCurso.jsx';
 
 const router = createBrowserRouter([
   {
@@ -35,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <ProtectedRoute><Home /></ProtectedRoute>, 
+      },
+      {
+        path: "/cursos",
+        element: <ProtectedRoute><Cursos /></ProtectedRoute>, 
       },
       {
         path: "/login",
@@ -49,7 +57,7 @@ const router = createBrowserRouter([
         element: <Logout />
       },
       {
-        path: "/cursos/:id",
+        path: "cursos/:id",
         element: <ProtectedRoute> <DetalleCursos/> </ProtectedRoute>
       },
       {
@@ -80,7 +88,25 @@ const router = createBrowserRouter([
       {
         path: "/admin/tecnologias",
         element: <AdminRoute><AdminTecnologias /></AdminRoute>
-      }
+      },
+      {
+        path: "/admin/cursos/eliminar/:id",
+        element: <AdminRoute><ConfirmDeleteCurso /></AdminRoute>
+      },
+      {
+        path: "/admin/categorias/delete/:id",
+        element: <AdminRoute><ConfirmDeleteCategoria /></AdminRoute>
+      },
+      {
+        path: "/admin/tecnologias/delete/:id",
+        element: <AdminRoute><ConfirmDeleteTecnologia /></AdminRoute>
+      },
+      {
+        path: "/admin/cursos/new",
+        element: <AdminRoute><CrearCurso /></AdminRoute>
+      },
+    
+    
 
     ]
   }

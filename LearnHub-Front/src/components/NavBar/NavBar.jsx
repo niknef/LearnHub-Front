@@ -20,7 +20,7 @@ const NavBar = () => {
     }
 
     return (
-        <nav className="navbar navbar-expand-md navbar-light bg-light">
+        <nav className="navbar navbar-expand-md navbar-light navbar-custom">
             <div className="container-fluid d-flex align-items-center">
                 {/* Logo a la izquierda */}
                 <Link className="navbar-brand d-flex align-items-center" to="/">
@@ -58,7 +58,7 @@ const NavBar = () => {
                                 </>
                                 : <>
                                     <li className='nav-item'>
-                                        <Link className='nav-link' to="/">Home</Link>
+                                        <Link className='nav-link' to="/cursos">Cursos</Link>
                                     </li>
                                     <li className='nav-item'>
                                         <Link className='nav-link' to="/tecnologias">Tecnologías</Link>
@@ -72,8 +72,9 @@ const NavBar = () => {
                                     {/* Botón de Admin visible solo para profesores */}
                                     {isAdmin && (
                                         <li className='nav-item'>
-                                            <Link className='nav-link' to="/admin">
+                                            <Link className='nav-link me-2 boton-custom-2' to="/admin">
                                                 Admin
+                                                <i className="bi bi-tools ms-2"></i>
                                             </Link>
                                         </li>
                                     )}

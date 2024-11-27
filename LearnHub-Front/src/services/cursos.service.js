@@ -11,3 +11,21 @@ export async function getCurso( id ){
 export async function getCursosPorProfesor(profesorId) {
     return call({ uri: `cursos?profesorId=${profesorId}` });
 }
+
+export async function eliminarCurso(id) {
+    return call({
+        uri: `cursos/${id}`,
+        method: "DELETE",
+    });
+}
+
+export async function agregarCurso(formData) {
+    const response = await call({
+        uri: "cursos",
+        method: "POST",
+        headers: {}, // No enviar `Content-Type`, el navegador lo maneja
+        body: formData,
+    });
+
+    return response;
+}

@@ -1,6 +1,8 @@
-import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const CursosTable = ({ data, onEdit, onDelete }) => {
+const CursosTable = ({ data, onEdit }) => {
+    const navigate = useNavigate();
+
     const capitalize = (str) => {
         if (!str) return '';
         return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
@@ -52,7 +54,7 @@ const CursosTable = ({ data, onEdit, onDelete }) => {
                                     </button>
                                     <button 
                                         className="btn btn-danger btn-sm" 
-                                        onClick={() => onDelete(curso._id)}
+                                        onClick={() => navigate(`/admin/cursos/eliminar/${curso._id}`)}
                                     >
                                         <i className="bi bi-trash-fill"></i> Eliminar
                                     </button>
